@@ -7,11 +7,24 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Bitcoin, TrendingUp, Users, Plus } from "lucide-react"
 
+interface LendingPool {
+  id: string
+  name: string
+  apy: string
+  tvl: string
+  tvlUSD: string
+  utilization: string
+  minDeposit: string
+  yourDeposit: string
+  earned: string
+  risk: "low" | "medium" | "high"
+}
+
 export default function LendingPage() {
-  const [selectedPool, setSelectedPool] = useState(null)
+  const [selectedPool, setSelectedPool] = useState<LendingPool | null>(null)
   const [lendAmount, setLendAmount] = useState("")
 
-  const lendingPools = [
+  const lendingPools: LendingPool[] = [
     {
       id: "btc-pool-1",
       name: "BTC Lending Pool Alpha",
@@ -62,7 +75,7 @@ export default function LendingPage() {
     },
   ]
 
-  const getRiskColor = (risk) => {
+  const getRiskColor = (risk: "low" | "medium" | "high"): string => {
     switch (risk) {
       case "low":
         return "bg-white/20 text-white"

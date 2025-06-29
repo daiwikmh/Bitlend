@@ -6,10 +6,24 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Target, MapPin, Clock, Users, AlertTriangle, CheckCircle, XCircle } from "lucide-react"
 
-export default function OperationsPage() {
-  const [selectedOperation, setSelectedOperation] = useState(null)
+interface Operation {
+  id: string
+  name: string
+  status: "active" | "planning" | "completed" | "compromised"
+  priority: "critical" | "high" | "medium" | "low"
+  location: string
+  agents: number
+  progress: number
+  startDate: string
+  estimatedCompletion: string
+  description: string
+  objectives: string[]
+}
 
-  const operations = [
+export default function OperationsPage() {
+  const [selectedOperation, setSelectedOperation] = useState<Operation | null>(null)
+
+  const operations: Operation[] = [
     {
       id: "OP-OMEGA-001",
       name: "SHADOW PROTOCOL",
@@ -77,7 +91,7 @@ export default function OperationsPage() {
     },
   ]
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: Operation["status"]): string => {
     switch (status) {
       case "active":
         return "bg-white/20 text-white"
@@ -92,7 +106,7 @@ export default function OperationsPage() {
     }
   }
 
-  const getPriorityColor = (priority) => {
+  const getPriorityColor = (priority: Operation["priority"]): string => {
     switch (priority) {
       case "critical":
         return "bg-red-500/20 text-red-500"
@@ -107,7 +121,7 @@ export default function OperationsPage() {
     }
   }
 
-  const getStatusIcon = (status) => {
+  const getStatusIcon = (status: Operation["status"]): JSX.Element => {
     switch (status) {
       case "active":
         return <Target className="w-4 h-4" />

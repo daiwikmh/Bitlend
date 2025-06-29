@@ -7,11 +7,32 @@ import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Bitcoin, Percent, Gift, TrendingUp } from "lucide-react"
 
+interface StakingPool {
+  id: string
+  name: string
+  apy: string
+  lockPeriod: string
+  minStake: string
+  totalStaked: string
+  yourStake: string
+  rewards: string
+  status: string
+  validatorCount: string
+  commission: string
+}
+
+interface GovernanceTokens {
+  balance: string
+  value: string
+  votingPower: string
+  proposals: string
+}
+
 export default function StakingPage() {
-  const [selectedPool, setSelectedPool] = useState(null)
+  const [selectedPool, setSelectedPool] = useState<StakingPool | null>(null)
   const [stakeAmount, setStakeAmount] = useState("")
 
-  const stakingPools = [
+  const stakingPools: StakingPool[] = [
     {
       id: "validator-1",
       name: "Citrea Validator Pool Alpha",
@@ -66,7 +87,7 @@ export default function StakingPage() {
     },
   ]
 
-  const governanceTokens = {
+  const governanceTokens: GovernanceTokens = {
     balance: "1,247.89",
     value: "3,743.67",
     votingPower: "0.12",
