@@ -131,7 +131,7 @@ export default function SystemsPage() {
     }
   }
 
-  const getStatusIcon = (status: System["status"]): JSX.Element => {
+  const getStatusIcon = (status: System["status"]): React.JSX.Element => {
     switch (status) {
       case "online":
         return <CheckCircle className="w-4 h-4" />
@@ -146,7 +146,7 @@ export default function SystemsPage() {
     }
   }
 
-  const getSystemIcon = (type: System["type"]): JSX.Element => {
+  const getSystemIcon = (type: System["type"]): React.JSX.Element => {
     switch (type) {
       case "Primary Server":
         return <Server className="w-6 h-6" />

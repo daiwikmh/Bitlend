@@ -9,7 +9,7 @@ import { Search, FileText, Eye, Download, Filter, Globe, Shield, AlertTriangle }
 
 export default function IntelligencePage() {
   const [searchTerm, setSearchTerm] = useState("")
-  const [selectedReport, setSelectedReport] = useState(null)
+  const [selectedReport, setSelectedReport] = useState<any>(null)
 
   const reports = [
     {
@@ -74,7 +74,7 @@ export default function IntelligencePage() {
     },
   ]
 
-  const getClassificationColor = (classification) => {
+  const getClassificationColor = (classification: string) => {
     switch (classification) {
       case "TOP SECRET":
         return "bg-red-500/20 text-red-500"
@@ -87,7 +87,7 @@ export default function IntelligencePage() {
     }
   }
 
-  const getThreatColor = (threat) => {
+  const getThreatColor = (threat: string) => {
     switch (threat) {
       case "critical":
         return "bg-red-500/20 text-red-500"
@@ -102,7 +102,7 @@ export default function IntelligencePage() {
     }
   }
 
-  const getStatusColor = (status) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
       case "verified":
         return "bg-white/20 text-white"
@@ -119,7 +119,7 @@ export default function IntelligencePage() {
     (report) =>
       report.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       report.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      report.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
+      report.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm.toLowerCase())),
   )
 
   return (
@@ -218,7 +218,7 @@ export default function IntelligencePage() {
                     <p className="text-sm text-neutral-300 ml-8">{report.summary}</p>
 
                     <div className="flex flex-wrap gap-2 ml-8">
-                      {report.tags.map((tag) => (
+                      {report.tags.map((tag: string) => (
                         <Badge key={tag} className="bg-neutral-800 text-neutral-300 text-xs">
                           {tag}
                         </Badge>
@@ -313,7 +313,7 @@ export default function IntelligencePage() {
                   <div>
                     <h3 className="text-sm font-medium text-neutral-300 tracking-wider mb-2">TAGS</h3>
                     <div className="flex flex-wrap gap-2">
-                      {selectedReport.tags.map((tag) => (
+                      {selectedReport.tags.map((tag: string) => (
                         <Badge key={tag} className="bg-neutral-800 text-neutral-300">
                           {tag}
                         </Badge>

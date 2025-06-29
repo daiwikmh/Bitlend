@@ -121,7 +121,7 @@ export default function OperationsPage() {
     }
   }
 
-  const getStatusIcon = (status: Operation["status"]): JSX.Element => {
+  const getStatusIcon = (status: Operation["status"]): React.JSX.Element => {
     switch (status) {
       case "active":
         return <Target className="w-4 h-4" />
