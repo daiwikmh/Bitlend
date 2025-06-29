@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Bitcoin } from "lucide-react"
 import { Link } from "react-router"
 
 export default function Navigation() {
@@ -9,7 +8,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-2">
-            <Bitcoin className="w-8 h-8 text-orange-500" />
+            <img src="/aegislogo.png" alt="Aegis Logo" className="w-8 h-8" />
             <span className="text-xl font-bold tracking-wider text-orange-500">BITLEND</span>
             <Badge className="bg-orange-500/20 text-orange-500 text-xs">BETA</Badge>
           </div>
