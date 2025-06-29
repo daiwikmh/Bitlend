@@ -4,35 +4,48 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Define CSS variables for theming */
-  --background: 0 0% 100%;
-  --foreground: 222.2 84% 4.9%;
-  --card: 0 0% 100%;
-  --card-foreground: 222.2 84% 4.9%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222.2 84% 4.9%;
-  --primary: 325 90% 75%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 210 40% 96.1%;
-  --secondary-foreground: 222.2 47.4% 11.2%;
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215.4 16.3% 46.9%;
-  --accent: 210 40% 96.1%;
-  --accent-foreground: 222.2 47.4% 11.2%;
+  /* Hero card color palette */
+  --hero-black: hsla(0, 0%, 0%, 1);
+  --hero-slate-gray: hsla(196, 9%, 51%, 1);
+  --hero-black-2: hsla(0, 0%, 2%, 1);
+  --hero-ash-gray: hsla(136, 18%, 75%, 1);
+  --hero-cadet-gray: hsla(183, 10%, 62%, 1);
+  
+  /* Legacy colors for backward compatibility */
+  --hero-battleship-gray: hsla(175, 5%, 52%, 1);
+  --hero-eerie-black: hsla(180, 4%, 14%, 1);
+  --hero-outer-space: hsla(193, 9%, 30%, 1);
+  --hero-onyx: hsla(192, 5%, 19%, 1);
+  
+  /* Black and white theme variables */
+  --background: 0 0% 5%;
+  --foreground: 0 0% 95%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 90%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 90%;
+  --primary: 0 0% 95%;
+  --primary-foreground: 0 0% 10%;
+  --secondary: 0 0% 15%;
+  --secondary-foreground: 0 0% 85%;
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 70%;
+  --accent: 0 0% 90%;
+  --accent-foreground: 0 0% 10%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 222.2 84% 4.9%;
+  --border: 0 0% 25%;
+  --input: 0 0% 15%;
+  --ring: 0 0% 95%;
   --radius: 0.75rem;
-  --sidebar-background: 0 0% 98%;
-  --sidebar-foreground: 240 5.3% 26.1%;
-  --sidebar-primary: 325 90% 75%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 240 4.8% 95.9%;
-  --sidebar-accent-foreground: 240 5.9% 10%;
-  --sidebar-border: 325 90% 85%;
-  --sidebar-ring: 325 90% 75%;
+  --sidebar-background: 0 0% 10%;
+  --sidebar-foreground: 0 0% 90%;
+  --sidebar-primary: 0 0% 95%;
+  --sidebar-primary-foreground: 0 0% 10%;
+  --sidebar-accent: 0 0% 90%;
+  --sidebar-accent-foreground: 0 0% 10%;
+  --sidebar-border: 0 0% 25%;
+  --sidebar-ring: 0 0% 95%;
 }
 
 /* Base styles */
@@ -42,12 +55,27 @@
   }
 
   body {
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    background: #000000;
+    color: #ffffff;
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* Allow body to grow beyond viewport */
+    min-height: 100vh;
     width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* Hide scrollbars globally */
+  * {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+  }
+
+  *::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  html, body {
+    overflow-x: hidden;
   }
 }
 
