@@ -2,6 +2,8 @@
 
 A Bitcoin-native DeFi platform that transforms Bitcoin into a dynamic DeFi asset.
 
+![Bitlend Landing Page](client/public/landing.png)
+
 ## What It Does
 
 Bitlend transforms Bitcoin into a dynamic DeFi asset by offering:
@@ -39,9 +41,9 @@ Bitcoin holders often face limited options to utilize their assets without sacri
 
 ## Contract Deployments
 
-- BTLDToken deployed to: 0xf4e97663CFC313FB76E82078C1eAEdf018bEB150
-- LendingPool deployed to: 0xd6093b63330A52f1601d9d62696E825AeB458fdA
-- Borrowing deployed to: 0x6f610923633a152250bFAFFF935f8380D9c9C3b1
-- Staking deployed to: 0xbef65B1C928a160a6469f6cebe64222ecdb9Bf55
-- Governance deployed to: 0x154D403373493e8bF21525b60eD314FCD06a286a
-- Treasury deployed to: 0x3166FdC825F188c1b94154E5D948fB2736cCA38C
+- BTLDToken deployed to: [0xf4e97663CFC313FB76E82078C1eAEdf018bEB150](https://explorer.testnet.citrea.xyz/address/0xf4e97663CFC313FB76E82078C1eAEdf018bEB150)
+- LendingPool deployed to: [0xd6093b63330A52f1601d9d62696E825AeB458fdA](https://explorer.testnet.citrea.xyz/address/0xd6093b63330A52f1601d9d62696E825AeB458fdA)
+- Borrowing deployed to: [0x6f610923633a152250bFAFFF935f8380D9c9C3b1](https://explorer.testnet.citrea.xyz/address/0x6f610923633a152250bFAFFF935f8380D9c9C3b1)
+- Staking deployed to: [0xbef65B1C928a160a6469f6cebe64222ecdb9Bf55](https://explorer.testnet.citrea.xyz/address/0xbef65B1C928a160a6469f6cebe64222ecdb9Bf55)
+- Governance deployed to: [0x154D403373493e8bF21525b60eD314FCD06a286a](https://explorer.testnet.citrea.xyz/address/0x154D403373493e8bF21525b60eD314FCD06a286a)
+- Treasury deployed to: [0x3166FdC825F188c1b94154E5D948fB2736cCA38C](https://explorer.testnet.citrea.xyz/address/0x3166FdC825F188c1b94154E5D948fB2736cCA38C)
