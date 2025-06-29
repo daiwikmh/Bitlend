@@ -1,23 +1,43 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ChevronRight, Wallet, TrendingUp, Coins, BarChart3, Bell, RefreshCw } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import PortfolioPage from "./portfolio/page"
-import LendingPage from "./lending/page"
-import BorrowingPage from "./borrowing/page"
-import StakingPage from "./staking/page"
-import AnalyticsPage from "./analytics/page"
+import { useState, useCallback } from "react";
+import { ChevronRight, Wallet, TrendingUp, Coins, BarChart3, Bell, RefreshCw } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import PortfolioPage from "./portfolio/page";
+import LendingPage from "./lending/page";
+import BorrowingPage from "./borrowing/page";
+import StakingPage from "./staking/page";
+import AnalyticsPage from "./analytics/page";
+import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { metaMask } from "wagmi/connectors";
 
 export default function DashboardPage() {
-  const [activeSection, setActiveSection] = useState("portfolio")
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [activeSection, setActiveSection] = useState("portfolio");
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const { address, isConnected } = useAccount();
+  const { connect } = useConnect();
+  const { disconnect } = useDisconnect();
+
+  // Shorten address for display (e.g., 0x1234...5678)
+  const shortenAddress = useCallback((addr: string | undefined) => {
+    if (!addr) return "";
+    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+  }, []);
+
+  // Handle wallet connection
+  const handleConnect = useCallback(() => {
+    connect({ connector: metaMask() });
+  }, [connect]);
 
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
       <div
-        className={`${sidebarCollapsed ? "w-16" : "w-70"} bg-neutral-900 border-r border-neutral-700 transition-all duration-300 fixed md:relative z-50 md:z-auto h-full md:h-auto ${!sidebarCollapsed ? "md:block" : ""}`}
+        className={`${
+          sidebarCollapsed ? "w-16" : "w-70"
+        } bg-neutral-900 border-r border-neutral-700 transition-all duration-300 fixed md:relative z-50 md:z-auto h-full md:h-auto ${
+          !sidebarCollapsed ? "md:block" : ""
+        }`}
       >
         <div className="p-4">
           <div className="flex items-center justify-between mb-8">
@@ -32,7 +52,9 @@ export default function DashboardPage() {
               className="text-neutral-400 hover:text-orange-500"
             >
               <ChevronRight
-                className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${sidebarCollapsed ? "" : "rotate-180"}`}
+                className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
+                  sidebarCollapsed ? "" : "rotate-180"
+                }`}
               />
             </Button>
           </div>
@@ -78,7 +100,10 @@ export default function DashboardPage() {
 
       {/* Mobile Overlay */}
       {!sidebarCollapsed && (
-        <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setSidebarCollapsed(true)} />
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={() => setSidebarCollapsed(true)}
+        />
       )}
 
       {/* Main Content */}
@@ -98,7 +123,24 @@ export default function DashboardPage() {
             <Button variant="ghost" size="icon" className="text-neutral-400 hover:text-orange-500">
               <RefreshCw className="w-4 h-4" />
             </Button>
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white text-xs">Connect Wallet</Button>
+            {isConnected ? (
+              <div className="flex items-center gap-2">
+                <span className="text-xs text-white">{shortenAddress(address)}</span>
+                <Button
+                  className="bg-orange-500 hover:bg-orange-600 text-white text-xs"
+                  onClick={() => disconnect()}
+                >
+                  Disconnect
+                </Button>
+              </div>
+            ) : (
+              <Button
+                className="bg-orange-500 hover:bg-orange-600 text-white text-xs"
+                onClick={handleConnect}
+              >
+                Connect Wallet
+              </Button>
+            )}
           </div>
         </div>
 
@@ -112,5 +154,5 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
